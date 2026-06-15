@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adhiana - Product Designer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --dark: #111827;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --light-gray: #e5e7eb;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        .text-primary {
+            color: var(--primary);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--dark);
+            border: 2px solid var(--light-gray);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 15px 30px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 150px;
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 1.125rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-frame {
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+        }
+
+        .profile-frame img {
+            width: 94%;
+            height: 94%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid white;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 15%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: white;
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: var(--shadow);
+            margin-top: 40px;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .skill-category h3 i {
+            color: var(--primary);
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: var(--light);
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-item i {
+            font-size: 1.25rem;
+        }
+
+        .skill-design {
+            color: #ef4444;
+        }
+
+        .skill-illustration {
+            color: #8b5cf6;
+        }
+
+        .skill-dev {
+            color: #10b981;
+        }
+
+        .skill-code {
+            color: #f59e0b;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--light-gray);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 50%;
+            padding-right: 60px;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 50%;
+            padding-right: 0;
+            padding-left: 60px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            right: -10px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px var(--primary);
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            right: auto;
+            left: -10px;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .timeline-content .date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Portfolio Section */
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background: white;
+            border: 2px solid var(--light-gray);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-content {
+            padding: 25px;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .tag {
+            padding: 5px 12px;
+            background: var(--light);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        /* Testimonials */
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonials-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-card {
+            flex: 0 0 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-size: 1.25rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            color: var(--dark);
+        }
+
+        .client-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .client-info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h3,
+        .footer-newsletter h3 {
+            margin-bottom: 25px;
+            font-size: 1.25rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-newsletter input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Contact Social Media */
+        .contact-info .social-links a {
+            background: #f3f4f6;
+            color: #2563eb;
+            border: 1px solid #e5e7eb;
+        }
+
+        .contact-info .social-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.75rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .btn-group {
+                justify-content: center;
+            }
+
+            .timeline:before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-right: 0;
+                padding-left: 80px;
+            }
+
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+                padding-left: 80px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+                right: auto;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 30px;
+                transition: var(--transition);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                z-index: 1000;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .profile-frame {
+                width: 280px;
+                height: 280px;
+            }
+
+            .skills-section,
+            .contact-section {
+                padding: 40px 30px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.25rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .portfolio-filter {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .filter-btn {
+                width: 100%;
+                max-width: 200px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo"><span>Adhiana</span></a>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm <span class="text-primary">Adhiana</span></h1>
+                    <h2>Frontend Developer, UI/UX Designer & Mobile Developer</h2>
+                    <p>Bridging design and technology through intuitive user experiences, responsive web applications,
+                        and modern mobile solutions.</p>
+                    <div class="btn-group">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-briefcase"></i> View Portfolio
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i> Contact Me
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-frame">
+                        <img src="assets/fotoo.png" alt="Adhiana - Product Designer">
+                        <div class="floating-elements">
+                            <div class="floating-element"><i class="fab fa-figma"></i></div>
+                            <div class="floating-element"><i class="fas fa-pencil-alt"></i></div>
+                            <div class="floating-element"><i class="fas fa-code"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Skills & Expertise</h2>
+                <p>Combining creative design with technical implementation</p>
+            </div>
+            <div class="skills-section">
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-paint-brush"></i> Design Tools</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <i class="fab fa-figma skill-design"></i>
+                                <span>Figma</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-adobe skill-design"></i>
+                                <span>Adobe Illustrator</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-adobe skill-design"></i>
+                                <span>Adobe Photoshop</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-canva skill-design"></i>
+                                <span>Canva</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Development</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <i class="fas fa-code skill-dev"></i>
+                                <span>VS Code</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-github skill-dev"></i>
+                                <span>GitHub</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-git-alt skill-dev"></i>
+                                <span>Git</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-terminal skill-dev"></i>
+                                <span>Terminal</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-bezier-curve"></i> Illustration</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <i class="fas fa-pencil-alt skill-illustration"></i>
+                                <span>Digital Illustration</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-magic skill-illustration"></i>
+                                <span>Prototyping</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-palette skill-illustration"></i>
+                                <span>Color Theory</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-object-group skill-illustration"></i>
+                                <span>Wireframing</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-laptop-code"></i> Programming</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <i class="fab fa-js skill-code"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-dart skill-code"></i>
+                                <span>Dart</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-html5 skill-code"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-css3-alt skill-code"></i>
+                                <span>CSS3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="background: #f8fafc;">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>My Services</h2>
+                <p>Comprehensive solutions from concept to deployment</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>Creating intuitive and user-centered digital experiences through research, wireframing,
+                        prototyping, and modern interface design.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Frontend Development</h3>
+                    <p>Building responsive, interactive, and high-performance web applications using modern technologies
+                        and best development practices.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Mobile App Development</h3>
+                    <p>Developing seamless and scalable mobile applications that deliver exceptional user experiences
+                        across multiple platforms.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Landing Page Development</h3>
+                    <p>Crafting conversion-focused landing pages designed to engage users, generate leads, and drive
+                        business growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Work Experience</h2>
+                <p>My professional journey in design and development</p>
+            </div>
+
+            <div class="timeline">
+
+                <!-- TAMBAHAN BARU -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>UI Designer - WEB Perpustakaan</h3>
+                        <span class="date">February 2026 - Present</span>
+                        <p>SMK Telkom Malang</p>
+                        <p>
+                            Designed and developed the user interface for a school library website.
+                            Created responsive layouts, integrated database functionality,
+                            and collaborated with the development team to improve usability.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>UI Designer - WEB METIC</h3>
+                        <span class="date">June 2025 - July 2025</span>
+                        <p>METIC Organization</p>
+                        <p>
+                            Participated in website development for organizational publications,
+                            designed responsive user interfaces, and collaborated on website
+                            structure and user experience improvements.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Mobile Developer</h3>
+                        <span class="date">2025 - Present</span>
+                        <p>Personal & Academic Projects</p>
+                        <p>
+                            Developing cross-platform mobile applications using modern frameworks,
+                            focusing on performance, usability, and seamless user experiences.
+                            Building mobile solutions from UI implementation to application deployment.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Web Developer</h3>
+                        <span class="date">2024 - Present</span>
+                        <p>Personal & Academic Projects</p>
+                        <p>
+                            Designing and developing responsive websites and web applications using
+                            HTML, CSS, JavaScript, and modern development practices. Focused on
+                            creating fast, accessible, and user-friendly digital experiences.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" style="background: #f8fafc;">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>My Portfolio</h2>
+                <p>A selection of my recent design and development projects</p>
+            </div>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="mobile">Mobile App</button>
+                <button class="filter-btn" data-filter="ui-ux">UI/UX Design</button>
+                <button class="filter-btn" data-filter="data">Data Analysis</button>
+            </div>
+            <div class="portfolio-grid">
+
+                <!-- Our Store -->
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <img src="assets/portfolio/our-store.png" alt="Our Store">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Our Store</h3>
+                        <p>E-commerce website project featuring product catalog, shopping flow, and responsive user
+                            interface.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KKA Analisis Data -->
+                <div class="portfolio-item" data-category="data">
+                    <div class="portfolio-image">
+                        <img src="assets/portfolio/kka-data.png" alt="KKA Analisis Data">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Analisis Data</h3>
+                        <p>Data analysis project focused on processing, organizing, and presenting meaningful
+                            information.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Data Analysis</span>
+                            <span class="tag">Programming</span>
+                            <span class="tag">Database</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KIK JoyCharm -->
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image">
+                        <img src="assets/portfolio/joycharm.png" alt="KIK JoyCharm">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>JoyCharm</h3>
+                        <p>Mobile application project designed to provide a modern and engaging user experience.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Mobile App</span>
+                            <span class="tag">UI/UX</span>
+                            <span class="tag">Flutter</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analysis Nilai -->
+                <div class="portfolio-item" data-category="data">
+                    <div class="portfolio-image">
+                        <img src="assets/portfolio/analysis-nilai.png" alt="Analysis Nilai">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Analysis Nilai</h3>
+                        <p>Student score analysis system for managing and evaluating academic performance data.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Data Analysis</span>
+                            <span class="tag">Web App</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UKL PDAM -->
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image">
+                        <img src="assets/portfolio/ukl-pdam.png" alt="UKL PDAM">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Amerta-Pay</h3>
+                        <p>Water utility management system developed to handle customer and billing data efficiently.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">Database</span>
+                            <span class="tag">PHP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project UKL Mobile App -->
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image">
+                        <img src="assets/portfolio/ukl-mobile.png" alt="Project UKL Mobile App">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Mobile App</h3>
+                        <p>Cross-platform mobile application built with a focus on usability and responsive design.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Mobile Development</span>
+                            <span class="tag">Flutter</span>
+                            <span class="tag">UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Cake -->
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image">
+                        <img src="assets/portfolio/mobile-cake.png" alt="Mobile Cake">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Cake shop</h3>
+                        <p>Mobile ordering application for bakery products with a simple and user-friendly interface.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Mobile App</span>
+                            <span class="tag">Flutter</span>
+                            <span class="tag">E-Commerce</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tukang UKL -->
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image">
+                        <img src="assets/portfolio/tukang-ukl.png" alt="Tukang UKL">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Tukang App</h3>
+                        <p>Service marketplace application connecting customers with skilled workers and technicians.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Mobile App</span>
+                            <span class="tag">Flutter</span>
+                            <span class="tag">Marketplace</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hazell Bakery -->
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <img src="assets/portfolio/hazell-bakery.png" alt="Hazell Bakery">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Hazell Bakery</h3>
+                        <p>Bakery business website showcasing products, promotions, and brand identity.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Web Design</span>
+                            <span class="tag">UI/UX</span>
+                            <span class="tag">Frontend</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bakeryy -->
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <img src="assets/portfolio/bakeryy.png" alt="Bakeryy">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Bakeryy</h3>
+                        <p>Responsive bakery website project focused on product presentation and customer engagement.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UKL Progdas -->
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <img src="assets/portfolio/ukl-progdas.png" alt="UKL Progdas">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Progdas</h3>
+                        <p>Programming fundamentals project demonstrating problem solving and application logic
+                            implementation.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Programming</span>
+                            <span class="tag">Logic</span>
+                            <span class="tag">Development</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="ui-ux">
+                    <div class="portfolio-image">
+                        <img src="assets/portfolio/metic-uiux.png" alt="METIC Website Design">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>METIC Website UI/UX Design</h3>
+                        <p>
+                            Designed the user interface and user experience for the official METIC
+                            organization website, focusing on accessibility, responsive layouts,
+                            and intuitive navigation.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="tag">UI/UX Design</span>
+                            <span class="tag">Figma</span>
+                            <span class="tag">Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="ui-ux">
+                    <div class="portfolio-image">
+                        <img src="assets/portfolio/perpus-uiux.png" alt="Library Website Design">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>School Library Website UI/UX</h3>
+                        <p>
+                            Designed a modern and user-friendly interface for a school library
+                            website, including wireframes, layouts, and interactive prototypes
+                            to improve the user experience.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="tag">UI/UX Design</span>
+                            <span class="tag">Figma</span>
+                            <span class="tag">Prototype</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Client Testimonials</h2>
+                <p>What clients say about working with me</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonials-container" id="testimonialsContainer">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Adhiana transformed our app's user experience. Her design improved our onboarding
+                            completion rate by 40%. She's a true professional who understands both design and technical
+                            constraints."
+                        </div>
+                        <div class="client-info">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                                alt="Alex Johnson">
+                            <strong>Alex Johnson</strong>
+                            <span>Product Manager, TechCorp</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Working with Adhiana was a game-changer for our website redesign. She delivered a
+                            responsive design that looks amazing on all devices and improved our conversion rate
+                            significantly."
+                        </div>
+                        <div class="client-info">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                                alt="Sarah Miller">
+                            <strong>Sarah Miller</strong>
+                            <span>Marketing Director, InnovateCo</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Adhiana's ability to translate complex requirements into elegant designs is exceptional.
+                            Her attention to detail and understanding of user behavior made our project a huge success."
+                        </div>
+                        <div class="client-info">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                                alt="Michael Chen">
+                            <strong>Michael Chen</strong>
+                            <span>CTO, StartupXYZ</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-btn" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Get In Touch</h2>
+                <p>Have a project in mind? Let's create something amazing together</p>
+            </div>
+            <div class="contact-section">
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Let's Discuss Your Project</h3>
+                        <p>I'm always open to discussing new opportunities and interesting projects. Feel free to reach
+                            out if you'd like to collaborate or just say hello!</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email</strong>
+                                    <p>adhianaapriantina@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <strong>Phone</strong>
+                                    <p>+62 8124 6334 803</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Location</strong>
+                                    <p>Pare, Kediri, Jawa Timur</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/adhiana-alika-9baaa72aa" target="_blank"
+                                aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+
+                            <a href="https://www.instagram.com/_dhriaen" target="_blank" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+
+                            <a href="https://github.com/dhianaaa" target="_blank" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Your Email" required>
+                            <input type="text" placeholder="Subject" required>
+                            <textarea placeholder="Your Message" required></textarea>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Adh<span>iana</span></div>
+                    <p>Product Designer & UI/UX Developer creating digital experiences that combine aesthetics with
+                        functionality.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">Landing Pages</a></li>
+                        <li><a href="#">Mobile Design</a></li>
+                        <li><a href="#">Brand Identity</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Stay Updated</h3>
+                    <p>Subscribe to my newsletter for design tips and updates.</p>
+                    <input type="email" placeholder="Your Email">
+                    <button class="btn btn-primary" style="width: 100%;">Subscribe</button>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Adhiana. All rights reserved. | Designed with <i class="fas fa-heart"
+                        style="color: #ef4444;"></i> and <i class="fas fa-code"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // Portfolio Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Testimonials Slider
+        const testimonialsContainer = document.getElementById('testimonialsContainer');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlide = 0;
+
+        function updateSlider() {
+            const slideWidth = testimonialsContainer.clientWidth;
+            testimonialsContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % 3;
+            updateSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + 3) % 3;
+            updateSlider();
+        });
+
+        // Auto slide testimonials
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % 3;
+            updateSlider();
+        }, 5000);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+
+        // Update slider on window resize
+        window.addEventListener('resize', updateSlider);
+    </script>
+</body>
+
+</html>
